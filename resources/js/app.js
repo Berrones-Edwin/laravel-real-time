@@ -16,4 +16,6 @@ Echo.private('notifications')
         elementNotification.classList.remove('alert-success');
 
         elementNotification.classList.add(`alert-${e.type}`);
+
+        // $('#hola').to
     });
