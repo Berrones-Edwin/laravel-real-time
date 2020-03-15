@@ -6,6 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Events\UserCreated;
+use App\Events\UserUpdated;
+use App\Events\UserDeleted;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +40,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The event map for the model
+     * 
+     * Allows for object-based events for native Eloquent events
+     * 
+     * @var array
+     */
+
+     protected $dispatchesEvents=[
+        'created'=> UserCreated::class,
+        'updated'=> UserUpdated::class,
+        'deleted'=> UserDeleted::class
+     ];
 }

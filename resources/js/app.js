@@ -4,10 +4,6 @@ require('./bootstrap');
 Echo.private('notifications')
     .listen('UserSessionChanged', (e) => {
 
-        // alert(e.message + " - " +e.type);
-
-        // notifications
-        
         const elementNotification = document.getElementById('notification');
 
         elementNotification.innerText = e.message;
@@ -16,6 +12,4 @@ Echo.private('notifications')
         elementNotification.classList.remove('alert-success');
 
         elementNotification.classList.add(`alert-${e.type}`);
-
-        // $('#hola').to
     });
