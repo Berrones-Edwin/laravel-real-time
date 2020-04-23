@@ -46960,15 +46960,26 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var elementNotification = document.getElementById('notification'); // console.log(elementNotification,'1')
+// Echo.private('notifications')
+//     .listen('UserSessionChanged', (e) => {
+//         console.log(e)
+//         elementNotification.innerText = e.message;
+//         elementNotification.classList.remove('invisible');
+//         elementNotification.classList.remove('alert-danger');
+//         elementNotification.classList.remove('alert-success');
+//         elementNotification.classList.add(`alert-${e.type}`);
+//         console.log('mostrar msj')
+//     });
+
 Echo["private"]('notifications').listen('UserSessionChanged', function (e) {
-  // alert(e.message + " - " +e.type);
-  // notifications
+  // console.log(e)
   var elementNotification = document.getElementById('notification');
   elementNotification.innerText = e.message;
   elementNotification.classList.remove('invisible');
-  elementNotification.classList.remove('alert-danger');
   elementNotification.classList.remove('alert-success');
-  elementNotification.classList.add("alert-".concat(e.type));
+  elementNotification.classList.remove('alert-danger');
+  elementNotification.classList.add('alert-' + e.type);
 });
 
 /***/ }),

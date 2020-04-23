@@ -71,7 +71,7 @@
         </nav>
 
         <main class="py-4">
-            <div id="notification" class="alert invisible container">Test</div>
+            <div id="notification" class="alert container invisible">Test</div>
             @yield('content')
         </main>
     </div>
