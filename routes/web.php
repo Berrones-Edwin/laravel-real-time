@@ -19,5 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// API Users
 Route::view('/users','users.showAll')->name('users.all');
+// Ruleta
 Route::view('/game','game.show')->name('game.show');
+// Chat
+Route::get('/chat', 'ChatController@show')->name('chat.show');
+Route::post('/chat', 'ChatController@messageReceived')->name('chat.message');

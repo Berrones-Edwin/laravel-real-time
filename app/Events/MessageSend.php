@@ -9,23 +9,25 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+// Models
+use App\User;
 
-class UserSessionChanged implements ShouldBroadcast
+class MessageSend implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $user;
     public $message;
-    public $type;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message,$type)
+    public function __construct(User $user,$message)
     {
-        //
+        
+        $this->user = $user;
         $this->message = $message;
-        $this->type = $type;
     }
 
     /**
@@ -35,9 +37,7 @@ class UserSessionChanged implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        \Log::debug("{$this->message}");
-        \Log::debug("{$this->type}");
-        // return new Channel('notifications');
-        return new PrivateChannel('notifications');
+        \Log::debug("{$this->user->name} => {$this->message}");
+        return new PresenceChannel('chat');
     }
 }

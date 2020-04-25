@@ -19,4 +19,13 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 // });
 Broadcast::channel('notifications', function ($user) {
     return $user != null;
+    // return $user;
+});
+
+Broadcast::channel('chat', function ($user) {
+    if($user != null)
+        return [
+                'id'=>$user->id,
+                'name'=>$user->name
+            ];
 });

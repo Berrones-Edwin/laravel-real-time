@@ -23,7 +23,7 @@ const elementNotification = document.getElementById('notification');
 Echo.private('notifications')
     .listen('UserSessionChanged', (e) => {
 
-        // console.log(e)
+        console.log(e)
         const elementNotification = document.getElementById('notification');
 
         elementNotification.innerText = e.message;
